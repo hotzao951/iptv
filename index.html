@@ -79,13 +79,8 @@
       background-color: rgba(255, 0, 120, 0.7);
     }
 
-    .prev {
-      left: -40px;
-    }
-
-    .next {
-      right: -40px;
-    }
+    .prev { left: -40px; }
+    .next { right: -40px; }
 
     .benefits {
       display: flex;
@@ -196,38 +191,35 @@
   </a>
 
   <script>
-    <script>
-  const logos = [
-    { src: 'NETFLIX.png', name: 'NETFLIX' },
-    { src: 'HBOMAX.jpg', name: 'HBO MAX' },
-    { src: 'AMAZON.png', name: 'AMAZON PRIME' },
-    { src: 'GLOBOPLAY.jpg', name: 'GLOBO PLAY' },
-    { src: 'disneyplus.JPG', name: 'DISNEY PLUS' },
-    { src: 'Crunchyroll.PNG', name: 'CRUNCHYROLL' }
-  ];
+    const logos = [
+      { src: 'NETFLIX.png', name: 'NETFLIX' },
+      { src: 'HBOMAX.jpg', name: 'HBO MAX' },
+      { src: 'AMAZON.png', name: 'AMAZON PRIME' },
+      { src: 'GLOBOPLAY.jpg', name: 'GLOBO PLAY' },
+      { src: 'disneyplus.JPG', name: 'DISNEY PLUS' },
+      { src: 'Crunchyroll.PNG', name: 'CRUNCHYROLL' }
+    ];
 
-  let current = 0;
-  const img = document.getElementById('carouselImage');
-  const txt = document.getElementById('carouselText');
+    let current = 0;
+    const img = document.getElementById('carouselImage');
+    const txt = document.getElementById('carouselText');
 
-  function updateCarousel() {
-    img.src = logos[current].src;
-    txt.textContent = logos[current].name;
-  }
+    function updateCarousel() {
+      img.src = logos[current].src;
+      txt.textContent = logos[current].name;
+    }
 
-  function nextSlide() {
-    current = (current + 1) % logos.length;
-    updateCarousel();
-  }
+    function nextSlide() {
+      current = (current + 1) % logos.length;
+      updateCarousel();
+    }
 
-  function prevSlide() {
-    current = (current - 1 + logos.length) % logos.length;
-    updateCarousel();
-  }
+    function prevSlide() {
+      current = (current - 1 + logos.length) % logos.length;
+      updateCarousel();
+    }
 
-  setInterval(nextSlide, 3000);
-</script>
-
+    setInterval(nextSlide, 3000);
   </script>
 
 </body>
