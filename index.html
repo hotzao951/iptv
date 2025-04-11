@@ -87,28 +87,33 @@
       right: -40px;
     }
 
-    ul.features {
-      list-style: none;
-      padding: 0;
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 700px;
       margin: 40px auto;
-      text-align: left;
-      max-width: 600px;
-      font-size: 18px;
-      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
-      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
     }
 
-    ul.features li {
-      margin: 10px 0;
-      padding-left: 1.2em;
-      position: relative;
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      text-align: left;
     }
 
-    ul.features li::before {
-      content: '🔥';
-      position: absolute;
-      left: 0;
+    .benefit span {
+      font-size: 32px;
+    }
+
+    .benefit p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
     }
 
     .cta-button {
@@ -163,13 +168,28 @@
     <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
   </div>
 
-  <ul class="features">
-    <li>+6.000 Canais ao vivo (UFC, Premiere, SporTV, ESPN, Band, Esportes, Paramount, Conmebol Libertadores, etc)</li>
-    <li>Todos os Filmes e séries atualizadas (Netflix, HBOMAX, Disney+, Amazon, Globo Play, Crunchyroll, STAR+, Apple TV etc)</li>
-    <li>Canais adultos liberados</li>
-    <li>Compatível com Smart TV, celular, tablet, computador</li>
-    <li>Transmissão rápida e estável</li>
-  </ul>
+  <div class="benefits">
+    <div class="benefit">
+      <span>📺</span>
+      <p><strong>+6.000 Canais ao Vivo</strong><br>UFC, Premiere, SporTV, Conmebol, ESPN, TNT Sports e mais!</p>
+    </div>
+    <div class="benefit">
+      <span>🎬</span>
+      <p><strong>Filmes e Séries Atualizadas</strong><br>Netflix, Amazon, Disney+, Star+, Apple TV, HBO Max</p>
+    </div>
+    <div class="benefit">
+      <span>🔞</span>
+      <p><strong>Canais Adultos Liberados</strong><br>Sem bloqueios. Acesso completo.</p>
+    </div>
+    <div class="benefit">
+      <span>🧠</span>
+      <p><strong>Compatível com Tudo</strong><br>Celular, Smart TV, Tablet, Notebook e TV Box</p>
+    </div>
+    <div class="benefit">
+      <span>⚡</span>
+      <p><strong>Transmissão Rápida e Estável</strong><br>Zero travamento. Qualidade HD e Full HD.</p>
+    </div>
+  </div>
 
   <a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
     QUERO TESTAR GRÁTIS AGORA
