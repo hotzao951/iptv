@@ -143,6 +143,17 @@
       50% { opacity: 0.6; }
       100% { opacity: 1; }
     }
+
+    .countdown {
+      font-size: 22px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(255, 0, 120, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -154,6 +165,7 @@
   <header>
     <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
     <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
+    <div id="timer" class="countdown">Tempo restante: 03:00:00</div>
   </header>
 
   <div class="carousel-container">
@@ -220,6 +232,27 @@
     }
 
     setInterval(nextSlide, 3000);
+
+    // Cronômetro regressivo de 3 horas
+    let countdownTime = 3 * 60 * 60; // 3 horas em segundos
+    const timerDisplay = document.getElementById('timer');
+
+    function updateCountdown() {
+      const hours = String(Math.floor(countdownTime / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((countdownTime % 3600) / 60)).padStart(2, '0');
+      const seconds = String(countdownTime % 60).padStart(2, '0');
+      timerDisplay.textContent = `Tempo restante: ${hours}:${minutes}:${seconds}`;
+
+      if (countdownTime > 0) {
+        countdownTime--;
+        setTimeout(updateCountdown, 1000);
+      } else {
+        timerDisplay.textContent = "⏰ Tempo esgotado! Acesso encerrado.";
+        timerDisplay.style.background = '#ff0000';
+      }
+    }
+
+    updateCountdown();
   </script>
 
 </body>
