@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Teste IPTV - 3 Horas Grátis</title>
   <style>
     body {
@@ -20,7 +20,7 @@
     body::before {
       content: "";
       position: fixed;
-      top: 0;
+      top:  0;
       left: 0;
       width: 100%;
       height: 100%;
@@ -77,6 +77,17 @@
     }
     .prev { left: -40px; }
     .next { right: -40px; }
+    .benefits, .comparativo, .depoimentos {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 700px;
+    }
+    .benefits li, .comparativo li {
+      text-align: left;
+      margin: 8px 0;
+    }
     .cta-button {
       display: inline-block;
       margin: 30px auto;
@@ -124,12 +135,45 @@
   <div class="carousel-container">
     <button class="nav-button prev" onclick="prevVideo()">&#10094;</button>
     <video id="carouselVideo" class="carousel-video" autoplay muted loop>
-      <source id="videoSource" src="https://cdn.pixabay.com/video/2022/08/05/127904-737148115_large.mp4" type="video/mp4">
+      <source id="videoSource" src="https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4" type="video/mp4">
     </video>
     <div id="carouselText" class="carousel-text">
       <img src="Crunchyroll.png" alt="Crunchyroll"> CRUNCHYROLL
     </div>
     <button class="nav-button next" onclick="nextVideo()">&#10095;</button>
+  </div>
+
+  <div class="benefits">
+    <h2>✅ O que você vai ter acesso:</h2>
+    <ul>
+      <li>Mais de 6.000 canais (UFC, Premiere, TNT Sports, ESPN, etc)</li>
+      <li>Filmes e Séries atualizadas (Netflix, HBO Max, Amazon, Disney+, etc)</li>
+      <li>Canais adultos liberados</li>
+      <li>Compatível com Smart TV, Celular, PC, TV Box</li>
+      <li>Qualidade HD e Full HD sem travamentos</li>
+    </ul>
+  </div>
+
+  <div class="comparativo">
+    <h2>💸 Se fosse assinar tudo separadamente:</h2>
+    <ul>
+      <li>Netflix: R$40</li>
+      <li>Amazon Prime: R$15</li>
+      <li>Disney+: R$33</li>
+      <li>HBO Max: R$35</li>
+      <li>Globoplay: R$25</li>
+      <li>Crunchyroll: R$25</li>
+      <li>+ Canais ao vivo e PPV: R$150+</li>
+    </ul>
+    <p><strong>Total: +R$600/mês</strong></p>
+    <p><strong>Com nosso app: R$35 mensais</strong></p>
+  </div>
+
+  <div class="depoimentos">
+    <h2>🗣️ Veja o que estão dizendo:</h2>
+    <p><strong>Lucas R.:</strong> “Assinei e cancelei tudo. Netflix, Amazon... tudo aqui dentro.”</p>
+    <p><strong>Renata M.:</strong> “Achei que fosse golpe, testei as 3h e comprei. É surreal.”</p>
+    <p><strong>Thiago V.:</strong> “Futebol ao vivo, canais adultos e séries. Tô dentro!”</p>
   </div>
 
   <a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
@@ -141,32 +185,32 @@
   <script>
     const videos = [
       {
-        src: "https://cdn.pixabay.com/video/2022/08/05/127904-737148115_large.mp4",
+        src: "https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4",
         logo: "Crunchyroll.png",
         name: "CRUNCHYROLL"
       },
       {
-        src: "https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4",
+        src: "https://cdn.pixabay.com/video/2022/11/04/139075-767205502_large.mp4",
         logo: "NETFLIX.png",
         name: "NETFLIX"
       },
       {
-        src: "https://cdn.pixabay.com/video/2023/06/30/171773-838385890_large.mp4",
+        src: "https://cdn.pixabay.com/video/2023/01/02/146274-798979183_large.mp4",
         logo: "HBOMAX.jpg",
         name: "HBO MAX"
       },
       {
-        src: "https://cdn.pixabay.com/video/2023/04/06/158296-821060781_large.mp4",
+        src: "https://cdn.pixabay.com/video/2023/05/18/165520-832663589_large.mp4",
         logo: "AMAZON.png",
         name: "AMAZON PRIME"
       },
       {
-        src: "https://cdn.pixabay.com/video/2023/04/06/158294-821059614_large.mp4",
+        src: "https://cdn.pixabay.com/video/2022/11/15/139668-768559164_large.mp4",
         logo: "GLOBOPLAY.jpg",
         name: "GLOBO PLAY"
       },
       {
-        src: "https://cdn.pixabay.com/video/2023/04/19/160264-823758687_large.mp4",
+        src: "https://cdn.pixabay.com/video/2023/05/11/164440-830887693_large.mp4",
         logo: "disneyplus.JPG",
         name: "DISNEY PLUS"
       }
@@ -193,7 +237,7 @@
       updateVideo();
     }
 
-    setInterval(nextVideo, 6000);
+    setInterval(nextVideo, 8000);
 
     const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
     let nomeAtual = 0;
@@ -209,3 +253,4 @@
   </script>
 </body>
 </html>
+
