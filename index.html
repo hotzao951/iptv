@@ -17,7 +17,6 @@
       text-align: center;
       position: relative;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -28,33 +27,27 @@
       background: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
-
     header {
       background: rgba(0, 0, 0, 0.7);
       padding: 40px 20px 20px;
     }
-
     header h1 {
       font-size: 28px;
       margin: 0;
     }
-
     header p {
       font-size: 18px;
       margin-top: 10px;
     }
-
     .carousel-container {
       margin: 30px auto;
       position: relative;
       width: 320px;
     }
-
     .carousel-video {
       width: 100%;
       border-radius: 10px;
     }
-
     .carousel-text {
       margin-top: 10px;
       font-size: 18px;
@@ -64,11 +57,9 @@
       justify-content: center;
       gap: 10px;
     }
-
     .carousel-text img {
       height: 24px;
     }
-
     .nav-button {
       position: absolute;
       top: 50%;
@@ -81,14 +72,11 @@
       cursor: pointer;
       border-radius: 50%;
     }
-
     .nav-button:hover {
       background-color: rgba(255, 0, 120, 0.7);
     }
-
     .prev { left: -40px; }
     .next { right: -40px; }
-
     .benefits {
       display: flex;
       flex-direction: column;
@@ -100,24 +88,20 @@
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
     }
-
     .benefit {
       display: flex;
       align-items: flex-start;
       gap: 15px;
       text-align: left;
     }
-
     .benefit span {
       font-size: 32px;
     }
-
     .benefit p {
       margin: 0;
       font-size: 17px;
       line-height: 1.4;
     }
-
     .cta-button {
       display: inline-block;
       margin: 30px auto;
@@ -130,13 +114,11 @@
       animation: pulse 1.5s infinite;
       box-shadow: 0 0 15px #ff0078;
     }
-
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.08); }
       100% { transform: scale(1); }
     }
-
     .urgency-popup {
       background: #ff0000;
       padding: 12px;
@@ -144,13 +126,11 @@
       animation: blink 1s infinite;
       font-weight: bold;
     }
-
     @keyframes blink {
       0% { opacity: 1; }
       50% { opacity: 0.6; }
       100% { opacity: 1; }
     }
-
     .live-notification {
       position: fixed;
       bottom: 60px;
@@ -166,7 +146,6 @@
       animation: fade 0.5s ease-in-out;
       display: none;
     }
-
     @keyframes fade {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -174,65 +153,36 @@
   </style>
 </head>
 <body>
-
   <div class="urgency-popup">
     ⚠️ Promoção Relâmpago: Teste GRÁTIS por 3 horas - Só hoje!
   </div>
-
   <header>
     <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
     <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
   </header>
-
   <div class="carousel-container">
     <button class="nav-button prev" onclick="prevVideo()">&#10094;</button>
     <video id="carouselVideo" class="carousel-video" autoplay muted loop>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      <source id="videoSource" src="" type="video/mp4">
     </video>
-    <div id="carouselText" class="carousel-text">
-      <img src="Crunchyroll.png" alt="Crunchyroll"> CRUNCHYROLL
-    </div>
+    <div id="carouselText" class="carousel-text"></div>
     <button class="nav-button next" onclick="nextVideo()">&#10095;</button>
   </div>
-
   <div class="benefits">
-    <div class="benefit">
-      <span>📺</span>
-      <p><strong>+6.000 Canais ao Vivo</strong><br>UFC, Premiere, SporTV, Conmebol, ESPN, TNT Sports e mais!</p>
-    </div>
-    <div class="benefit">
-      <span>🎬</span>
-      <p><strong>Filmes e Séries Atualizadas</strong><br>Netflix, Amazon, Disney+, Star+, Apple TV, HBO Max</p>
-    </div>
-    <div class="benefit">
-      <span>🔞</span>
-      <p><strong>Canais Adultos Liberados</strong><br>Sem bloqueios. Acesso completo.</p>
-    </div>
-    <div class="benefit">
-      <span>🧠</span>
-      <p><strong>Compatível com Tudo</strong><br>Celular, Smart TV, Tablet, Notebook e TV Box</p>
-    </div>
-    <div class="benefit">
-      <span>⚡</span>
-      <p><strong>Transmissão Rápida e Estável</strong><br>Zero travamento. Qualidade HD e Full HD.</p>
-    </div>
+    <div class="benefit"><span>📺</span><p><strong>+6.000 Canais ao Vivo</strong><br>UFC, Premiere, SporTV, Conmebol, ESPN, TNT Sports e mais!</p></div>
+    <div class="benefit"><span>🎬</span><p><strong>Filmes e Séries Atualizadas</strong><br>Netflix, Amazon, Disney+, Star+, Apple TV, HBO Max</p></div>
+    <div class="benefit"><span>🔞</span><p><strong>Canais Adultos Liberados</strong><br>Sem bloqueios. Acesso completo.</p></div>
+    <div class="benefit"><span>🧠</span><p><strong>Compatível com Tudo</strong><br>Celular, Smart TV, Tablet, Notebook e TV Box</p></div>
+    <div class="benefit"><span>⚡</span><p><strong>Transmissão Rápida e Estável</strong><br>Zero travamento. Qualidade HD e Full HD.</p></div>
   </div>
-
   <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 10px; margin: 40px auto; max-width: 700px;">
     <h2 style="font-size: 22px; margin-bottom: 15px;">📣 Pessoas reais já estão economizando com esse app:</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;">
-        <p><strong>Lucas R.</strong> ⭐⭐⭐⭐⭐<br>"Assinei e cancelei tudo. Netflix, Amazon... tudo aqui dentro. Top demais!"</p>
-      </div>
-      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;">
-        <p><strong>Renata M.</strong> ⭐⭐⭐⭐⭐<br>"Achei que fosse fake, mas testei as 3h grátis e fiquei! Muito melhor que pagar R$300/mês."</p>
-      </div>
-      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;">
-        <p><strong>Thiago V.</strong> ⭐⭐⭐⭐⭐<br>"Futebol ao vivo, séries e até canais adultos. É surreal por esse preço!"</p>
-      </div>
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Lucas R.</strong> ⭐⭐⭐⭐⭐<br>"Assinei e cancelei tudo. Netflix, Amazon... tudo aqui dentro. Top demais!"</p></div>
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Renata M.</strong> ⭐⭐⭐⭐⭐<br>"Achei que fosse fake, mas testei as 3h grátis e fiquei! Muito melhor que pagar R$300/mês."</p></div>
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Thiago V.</strong> ⭐⭐⭐⭐⭐<br>"Futebol ao vivo, séries e até canais adultos. É surreal por esse preço!"</p></div>
     </div>
   </div>
-
   <div style="background: rgba(255,255,255,0.07); padding: 25px; margin: 40px auto; max-width: 700px; border-radius: 10px;">
     <h2 style="font-size: 22px; margin-bottom: 10px;">💰 Comparativo Real</h2>
     <p style="font-size: 17px; line-height: 1.5;">Se você pagasse os planos mais baratos de cada app de streaming individualmente, daria algo assim:</p>
@@ -248,67 +198,43 @@
     <p style="font-size: 18px; font-weight: bold; margin-top: 10px; color: #00ff99;">Total: +R$600/mês 💸</p>
     <p style="font-size: 18px; margin-top: 10px;">Com o nosso app: <strong style="color:#ff0078">R$35 mensais</strong> — o preço de uma pizza 🍕</p>
   </div>
-
   <a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
     QUERO TESTAR GRÁTIS AGORA
   </a>
-
   <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
-
   <script>
     const videos = [
-      {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
-        logo: "Crunchyroll.png",
-        name: "CRUNCHYROLL"
-      },
-      {
-        src: "https://www.w3schools.com/html/movie.mp4",
-        logo: "NETFLIX.png",
-        name: "NETFLIX"
-      },
-      {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
-        logo: "HBOMAX.jpg",
-        name: "HBO MAX"
-      },
-      {
-        src: "https://www.w3schools.com/html/movie.mp4",
-        logo: "AMAZON.png",
-        name: "AMAZON PRIME"
-      },
-      {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
-        logo: "GLOBOPLAY.jpg",
-        name: "GLOBO PLAY"
-      },
-      {
-        src: "https://www.w3schools.com/html/movie.mp4",
-        logo: "disneyplus.JPG",
-        name: "DISNEY PLUS"
-      }
+      { src: "https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
+      { src: "https://cdn.pixabay.com/video/2022/10/14/137841-765206771_large.mp4", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
+      { src: "https://cdn.pixabay.com/video/2023/01/10/147016-800341053_large.mp4", logo: "NETFLIX.png", name: "NETFLIX" },
+      { src: "https://cdn.pixabay.com/video/2023/05/22/165986-833470259_large.mp4", logo: "NETFLIX.png", name: "NETFLIX" },
+      { src: "https://cdn.pixabay.com/video/2023/06/07/168492-835737338_large.mp4", logo: "HBOMAX.jpg", name: "HBO MAX" },
+      { src: "https://cdn.pixabay.com/video/2023/06/14/169445-836916694_large.mp4", logo: "HBOMAX.jpg", name: "HBO MAX" },
+      { src: "https://cdn.pixabay.com/video/2023/03/22/156314-816720165_large.mp4", logo: "AMAZON.png", name: "AMAZON PRIME" },
+      { src: "https://cdn.pixabay.com/video/2023/03/14/155236-814504667_large.mp4", logo: "AMAZON.png", name: "AMAZON PRIME" },
+      { src: "https://cdn.pixabay.com/video/2023/02/23/153147-811971731_large.mp4", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
+      { src: "https://cdn.pixabay.com/video/2022/11/15/139668-768559164_large.mp4", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
+      { src: "https://cdn.pixabay.com/video/2023/05/11/164440-830887693_large.mp4", logo: "disneyplus.JPG", name: "DISNEY PLUS" },
+      { src: "https://cdn.pixabay.com/video/2022/10/19/138106-765657010_large.mp4", logo: "disneyplus.JPG", name: "DISNEY PLUS" }
     ];
-
     let current = 0;
     const videoEl = document.getElementById('carouselVideo');
+    const videoSource = document.getElementById('videoSource');
     const textEl = document.getElementById('carouselText');
-
     function updateVideo() {
-      videoEl.src = videos[current].src;
+      videoSource.src = videos[current].src;
+      videoEl.load();
       textEl.innerHTML = `<img src="${videos[current].logo}" alt="${videos[current].name}"> ${videos[current].name}`;
     }
-
     function nextVideo() {
       current = (current + 1) % videos.length;
       updateVideo();
     }
-
     function prevVideo() {
       current = (current - 1 + videos.length) % videos.length;
       updateVideo();
     }
-
-    setInterval(nextVideo, 5000);
+    setInterval(nextVideo, 7000);
 
     const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
     let nomeAtual = 0;
