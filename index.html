@@ -204,18 +204,12 @@
   <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
   <script>
     const videos = [
-      { src: "https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
-      { src: "https://cdn.pixabay.com/video/2022/10/14/137841-765206771_large.mp4", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
-      { src: "https://cdn.pixabay.com/video/2023/01/10/147016-800341053_large.mp4", logo: "NETFLIX.png", name: "NETFLIX" },
-      { src: "https://cdn.pixabay.com/video/2023/05/22/165986-833470259_large.mp4", logo: "NETFLIX.png", name: "NETFLIX" },
-      { src: "https://cdn.pixabay.com/video/2023/06/07/168492-835737338_large.mp4", logo: "HBOMAX.jpg", name: "HBO MAX" },
-      { src: "https://cdn.pixabay.com/video/2023/06/14/169445-836916694_large.mp4", logo: "HBOMAX.jpg", name: "HBO MAX" },
-      { src: "https://cdn.pixabay.com/video/2023/03/22/156314-816720165_large.mp4", logo: "AMAZON.png", name: "AMAZON PRIME" },
-      { src: "https://cdn.pixabay.com/video/2023/03/14/155236-814504667_large.mp4", logo: "AMAZON.png", name: "AMAZON PRIME" },
-      { src: "https://cdn.pixabay.com/video/2023/02/23/153147-811971731_large.mp4", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
-      { src: "https://cdn.pixabay.com/video/2022/11/15/139668-768559164_large.mp4", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
-      { src: "https://cdn.pixabay.com/video/2023/05/11/164440-830887693_large.mp4", logo: "disneyplus.JPG", name: "DISNEY PLUS" },
-      { src: "https://cdn.pixabay.com/video/2022/10/19/138106-765657010_large.mp4", logo: "disneyplus.JPG", name: "DISNEY PLUS" }
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-05/small_watermarked/230426_02_Family_Livingroom_4k_001_preview.webm", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-07/small_watermarked/230703_BingeWatching_4k_001_preview.webm", logo: "NETFLIX.png", name: "NETFLIX" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-08/small_watermarked/230801_HBO_WatchParty_4k_001_preview.webm", logo: "HBOMAX.jpg", name: "HBO MAX" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-06/small_watermarked/230608_03_AmazonFamily_4k_001_preview.webm", logo: "AMAZON.png", name: "AMAZON PRIME" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-07/small_watermarked/230717_TV_Globoplay_4k_001_preview.webm", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-06/small_watermarked/230610_02_DisneyAnimationFan_4k_001_preview.webm", logo: "disneyplus.JPG", name: "DISNEY PLUS" }
     ];
     let current = 0;
     const videoEl = document.getElementById('carouselVideo');
@@ -235,7 +229,6 @@
       updateVideo();
     }
     setInterval(nextVideo, 7000);
-
     const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
     let nomeAtual = 0;
     function mostrarNotificacao() {
@@ -247,6 +240,7 @@
       setTimeout(mostrarNotificacao, 6000);
     }
     setTimeout(mostrarNotificacao, 2000);
+    updateVideo();
   </script>
 </body>
 </html>
