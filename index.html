@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teste IPTV - 3 Horas Grátis</title>
   <style>
     body {
@@ -17,7 +17,6 @@
       text-align: center;
       position: relative;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -28,18 +27,27 @@
       background: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
-
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px 20px 20px;
+    }
+    header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
     .carousel-container {
       margin: 30px auto;
       position: relative;
       width: 320px;
     }
-
     .carousel-video {
       width: 100%;
       border-radius: 10px;
     }
-
     .carousel-text {
       margin-top: 10px;
       font-size: 18px;
@@ -49,11 +57,9 @@
       justify-content: center;
       gap: 10px;
     }
-
     .carousel-text img {
       height: 24px;
     }
-
     .nav-button {
       position: absolute;
       top: 50%;
@@ -66,17 +72,50 @@
       cursor: pointer;
       border-radius: 50%;
     }
-
     .nav-button:hover {
       background-color: rgba(255, 0, 120, 0.7);
     }
-
     .prev { left: -40px; }
     .next { right: -40px; }
+    .cta-button {
+      display: inline-block;
+      margin: 30px auto;
+      padding: 16px 32px;
+      font-size: 20px;
+      background-color: #ff0078;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 15px #ff0078;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    .live-notification {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 0 10px rgba(255, 0, 120, 0.6);
+      z-index: 9999;
+      animation: fade 0.5s ease-in-out;
+      display: none;
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-
   <header>
     <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
     <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
@@ -85,7 +124,7 @@
   <div class="carousel-container">
     <button class="nav-button prev" onclick="prevVideo()">&#10094;</button>
     <video id="carouselVideo" class="carousel-video" autoplay muted loop>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      <source id="videoSource" src="https://cdn.pixabay.com/video/2022/08/05/127904-737148115_large.mp4" type="video/mp4">
     </video>
     <div id="carouselText" class="carousel-text">
       <img src="Crunchyroll.png" alt="Crunchyroll"> CRUNCHYROLL
@@ -93,35 +132,41 @@
     <button class="nav-button next" onclick="nextVideo()">&#10095;</button>
   </div>
 
+  <a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
+    QUERO TESTAR GRÁTIS AGORA
+  </a>
+
+  <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
+
   <script>
     const videos = [
       {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        src: "https://cdn.pixabay.com/video/2022/08/05/127904-737148115_large.mp4",
         logo: "Crunchyroll.png",
         name: "CRUNCHYROLL"
       },
       {
-        src: "https://www.w3schools.com/html/movie.mp4",
+        src: "https://cdn.pixabay.com/video/2023/03/07/154227-810535034_large.mp4",
         logo: "NETFLIX.png",
         name: "NETFLIX"
       },
       {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        src: "https://cdn.pixabay.com/video/2023/06/30/171773-838385890_large.mp4",
         logo: "HBOMAX.jpg",
         name: "HBO MAX"
       },
       {
-        src: "https://www.w3schools.com/html/movie.mp4",
+        src: "https://cdn.pixabay.com/video/2023/04/06/158296-821060781_large.mp4",
         logo: "AMAZON.png",
         name: "AMAZON PRIME"
       },
       {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        src: "https://cdn.pixabay.com/video/2023/04/06/158294-821059614_large.mp4",
         logo: "GLOBOPLAY.jpg",
         name: "GLOBO PLAY"
       },
       {
-        src: "https://www.w3schools.com/html/movie.mp4",
+        src: "https://cdn.pixabay.com/video/2023/04/19/160264-823758687_large.mp4",
         logo: "disneyplus.JPG",
         name: "DISNEY PLUS"
       }
@@ -129,10 +174,12 @@
 
     let current = 0;
     const videoEl = document.getElementById('carouselVideo');
+    const videoSource = document.getElementById('videoSource');
     const textEl = document.getElementById('carouselText');
 
     function updateVideo() {
-      videoEl.src = videos[current].src;
+      videoSource.src = videos[current].src;
+      videoEl.load();
       textEl.innerHTML = `<img src="${videos[current].logo}" alt="${videos[current].name}"> ${videos[current].name}`;
     }
 
@@ -146,8 +193,19 @@
       updateVideo();
     }
 
-    setInterval(nextVideo, 5000);
-  </script>
+    setInterval(nextVideo, 6000);
 
+    const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
+    let nomeAtual = 0;
+    function mostrarNotificacao() {
+      const notify = document.getElementById('liveNotify');
+      notify.textContent = `👥 ${nomes[nomeAtual]} acabou de comprar!`;
+      notify.style.display = 'block';
+      setTimeout(() => { notify.style.display = 'none'; }, 3000);
+      nomeAtual = (nomeAtual + 1) % nomes.length;
+      setTimeout(mostrarNotificacao, 6000);
+    }
+    setTimeout(mostrarNotificacao, 2000);
+  </script>
 </body>
 </html>
