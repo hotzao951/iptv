@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -48,12 +47,11 @@
     .carousel-container {
       margin: 30px auto;
       position: relative;
-      width: 300px;
+      width: 320px;
     }
 
-    .carousel-image {
+    .carousel-video {
       width: 100%;
-      height: auto;
       border-radius: 10px;
     }
 
@@ -61,6 +59,14 @@
       margin-top: 10px;
       font-size: 18px;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .carousel-text img {
+      height: 24px;
     }
 
     .nav-button {
@@ -145,17 +151,6 @@
       100% { opacity: 1; }
     }
 
-    .countdown {
-      font-size: 22px;
-      font-weight: bold;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px 20px;
-      border-radius: 10px;
-      margin-top: 10px;
-      display: inline-block;
-      box-shadow: 0 0 10px rgba(255, 0, 120, 0.5);
-    }
-
     .live-notification {
       position: fixed;
       bottom: 60px;
@@ -187,14 +182,17 @@
   <header>
     <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
     <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
-    <div id="timer" class="countdown">Tempo restante: 03:00:00</div>
   </header>
 
   <div class="carousel-container">
-    <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
-    <img id="carouselImage" class="carousel-image" src="NETFLIX.png" alt="Logo App">
-    <div id="carouselText" class="carousel-text">NETFLIX</div>
-    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
+    <button class="nav-button prev" onclick="prevVideo()">&#10094;</button>
+    <video id="carouselVideo" class="carousel-video" autoplay muted loop>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+    <div id="carouselText" class="carousel-text">
+      <img src="Crunchyroll.png" alt="Crunchyroll"> CRUNCHYROLL
+    </div>
+    <button class="nav-button next" onclick="nextVideo()">&#10095;</button>
   </div>
 
   <div class="benefits">
@@ -258,53 +256,59 @@
   <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
 
   <script>
-    const logos = [
-      { src: 'NETFLIX.png', name: 'NETFLIX' },
-      { src: 'HBOMAX.jpg', name: 'HBO MAX' },
-      { src: 'AMAZON.png', name: 'AMAZON PRIME' },
-      { src: 'GLOBOPLAY.jpg', name: 'GLOBO PLAY' },
-      { src: 'disneyplus.JPG', name: 'DISNEY PLUS' },
-      { src: 'Crunchyroll.png', name: 'CRUNCHYROLL' }
+    const videos = [
+      {
+        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        logo: "Crunchyroll.png",
+        name: "CRUNCHYROLL"
+      },
+      {
+        src: "https://www.w3schools.com/html/movie.mp4",
+        logo: "NETFLIX.png",
+        name: "NETFLIX"
+      },
+      {
+        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        logo: "HBOMAX.jpg",
+        name: "HBO MAX"
+      },
+      {
+        src: "https://www.w3schools.com/html/movie.mp4",
+        logo: "AMAZON.png",
+        name: "AMAZON PRIME"
+      },
+      {
+        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        logo: "GLOBOPLAY.jpg",
+        name: "GLOBO PLAY"
+      },
+      {
+        src: "https://www.w3schools.com/html/movie.mp4",
+        logo: "disneyplus.JPG",
+        name: "DISNEY PLUS"
+      }
     ];
 
     let current = 0;
-    const img = document.getElementById('carouselImage');
-    const txt = document.getElementById('carouselText');
+    const videoEl = document.getElementById('carouselVideo');
+    const textEl = document.getElementById('carouselText');
 
-    function updateCarousel() {
-      img.src = logos[current].src;
-      txt.textContent = logos[current].name;
+    function updateVideo() {
+      videoEl.src = videos[current].src;
+      textEl.innerHTML = `<img src="${videos[current].logo}" alt="${videos[current].name}"> ${videos[current].name}`;
     }
 
-    function nextSlide() {
-      current = (current + 1) % logos.length;
-      updateCarousel();
+    function nextVideo() {
+      current = (current + 1) % videos.length;
+      updateVideo();
     }
 
-    function prevSlide() {
-      current = (current - 1 + logos.length) % logos.length;
-      updateCarousel();
+    function prevVideo() {
+      current = (current - 1 + videos.length) % videos.length;
+      updateVideo();
     }
 
-    setInterval(nextSlide, 3000);
-
-    let countdownTime = 3 * 60 * 60;
-    const timerDisplay = document.getElementById('timer');
-    function updateCountdown() {
-      const hours = String(Math.floor(countdownTime / 3600)).padStart(2, '0');
-      const minutes = String(Math.floor((countdownTime % 3600) / 60)).padStart(2, '0');
-      const seconds = String(countdownTime % 60).padStart(2, '0');
-      timerDisplay.textContent = `Tempo restante: ${hours}:${minutes}:${seconds}`;
-
-      if (countdownTime > 0) {
-        countdownTime--;
-        setTimeout(updateCountdown, 1000);
-      } else {
-        timerDisplay.textContent = "⏰ Tempo esgotado! Acesso encerrado.";
-        timerDisplay.style.background = '#ff0000';
-      }
-    }
-    updateCountdown();
+    setInterval(nextVideo, 5000);
 
     const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
     let nomeAtual = 0;
@@ -318,6 +322,5 @@
     }
     setTimeout(mostrarNotificacao, 2000);
   </script>
-
 </body>
 </html>
