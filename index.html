@@ -1,84 +1,24 @@
+from zipfile import ZipFile
+
+# Caminho final para o arquivo zipado
+zip_path = "/mnt/data/appflix_clone.zip"
+
+# Criar o arquivo .zip com index.html e style.css
+with ZipFile(zip_path, "w") as zipf:
+    zipf.writestr("index.html", """
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AppFlix Pro - Todos os Streamings em um só lugar</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-    }
-
-    header {
-      background: linear-gradient(to right, #ff0078, #4200ff);
-      padding: 30px 20px;
-    }
-
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .hero-button {
-      display: inline-block;
-      background-color: #ff0078;
-      color: white;
-      padding: 16px 32px;
-      font-size: 18px;
-      text-decoration: none;
-      border-radius: 10px;
-      margin-top: 25px;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    section {
-      padding: 40px 20px;
-    }
-
-    .feature {
-      margin-bottom: 20px;
-    }
-
-    .price-box {
-      background-color: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 600px;
-      margin: 30px auto;
-    }
-
-    .price-box ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .price-box li {
-      margin: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <h1>🎬 Todos os streamings liberados + 1300 canais</h1>
     <p>Filmes, séries, animes, futebol, tudo em um único app por um valor que cabe no bolso.</p>
-    <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20IPTV%20premium">QUERO TER ACESSO</a>
+    <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20AppFlix">QUERO TER ACESSO</a>
   </header>
 
   <section>
@@ -86,12 +26,10 @@
       <h2>🔥 A melhor lista de canais, filmes e séries</h2>
       <p>Incluindo esportes, conteúdo adulto, infantil, religioso, reality shows, Globo, SporTV, Premiere, HBO, Netflix, Amazon Prime, Disney+ e muito mais.</p>
     </div>
-
     <div class="feature">
       <h2>⚡ Zero travamento. Qualidade FHD/4K</h2>
       <p>Servidores premium, tecnologia Xtream Pro e suporte real.</p>
     </div>
-
     <div class="feature">
       <h2>📱 Compatível com tudo</h2>
       <p>Funciona em qualquer celular, TV, TV Box, notebook ou tablet. Liberação imediata.</p>
@@ -111,7 +49,52 @@
     <p><strong>Com AppFlix: só R$ 35/mês</strong></p>
   </div>
 
-  <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20IPTV%20premium">TESTAR AGORA GRÁTIS</a>
-
+  <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20AppFlix">TESTAR AGORA GRÁTIS</a>
 </body>
 </html>
+    """)
+
+    zipf.writestr("style.css", """
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+header {
+  background: linear-gradient(to right, #ff0078, #4200ff);
+  padding: 30px 20px;
+}
+h1 { font-size: 26px; margin-bottom: 10px; }
+p { font-size: 18px; max-width: 600px; margin: 0 auto; }
+.hero-button {
+  display: inline-block;
+  background-color: #ff0078;
+  color: white;
+  padding: 16px 32px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-top: 25px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+section { padding: 40px 20px; }
+.feature { margin-bottom: 20px; }
+.price-box {
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+.price-box ul { list-style: none; padding: 0; }
+.price-box li { margin: 10px 0; }
+    """)
+
+zip_path
