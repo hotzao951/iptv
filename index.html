@@ -98,3 +98,46 @@ section { padding: 40px 20px; }
     """)
 
 zip_path
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+header {
+  background: linear-gradient(to right, #ff0078, #4200ff);
+  padding: 30px 20px;
+}
+h1 { font-size: 26px; margin-bottom: 10px; }
+p { font-size: 18px; max-width: 600px; margin: 0 auto; }
+.hero-button {
+  display: inline-block;
+  background-color: #ff0078;
+  color: white;
+  padding: 16px 32px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-top: 25px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+section { padding: 40px 20px; }
+.feature { margin-bottom: 20px; }
+.price-box {
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+.price-box ul { list-style: none; padding: 0; }
+.price-box li { margin: 10px 0; }
+    
