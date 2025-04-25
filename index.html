@@ -1,143 +1,825 @@
-from zipfile import ZipFile
 
-# Caminho final para o arquivo zipado
-zip_path = "/mnt/data/appflix_clone.zip"
-
-# Criar o arquivo .zip com index.html e style.css
-with ZipFile(zip_path, "w") as zipf:
-    zipf.writestr("index.html", """
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AppFlix Pro - Todos os Streamings em um só lugar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>🎬 Todos os streamings liberados + 1300 canais</h1>
-    <p>Filmes, séries, animes, futebol, tudo em um único app por um valor que cabe no bolso.</p>
-    <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20AppFlix">QUERO TER ACESSO</a>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AppFlix TV</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="icon" href="FavIcon.png" sizes="32x32">
+	<link rel="icon" href="FavIcon.png" sizes="192x192">
+	<link rel="apple-touch-icon" href="FavIcon.png">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/cards.css" />
+    <link rel="stylesheet" href="assets/css/purchase.css" />
+    <link rel="stylesheet" href="assets/css/faqs.css" />
+  </head>
 
-  <section>
-    <div class="feature">
-      <h2>🔥 A melhor lista de canais, filmes e séries</h2>
-      <p>Incluindo esportes, conteúdo adulto, infantil, religioso, reality shows, Globo, SporTV, Premiere, HBO, Netflix, Amazon Prime, Disney+ e muito mais.</p>
+  <body>
+    <!-- Header com desfoque -->
+    <div class="bg-dark text-white inicioo">
+      <header
+        class="container-fluid d-flex align-items-center py-3 position-relative header-blur"
+      >
+        <div
+          class="container d-flex justify-content-between align-items-center"
+        >
+          <img
+            src="assets/img/AppFlix-Logo.png"
+            alt="AppFlix TV Logo"
+            class="logo-header"
+          />
+          <a href="#plans" class="btn btn-enter">
+            ENTRAR <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Section -->
+      <section
+        class="container d-flex flex-column flex-lg-row align-items-center justify-content-center text-center text-lg-start margem-topo"
+      >
+        <div class="content w-100">
+          <h1 class="main-title text-danger fw-bold">
+            Todos os streaming liberados e +1300 canais abertos<br />
+            <span class="text-white">com um preço que cabe no seu bolso</span>
+          </h1>
+          <p class="main-paragraph mt-4 fs-5">
+            Tenha filmes, séries, animes e canais ao vivo, tudo em um só
+            lugar,<br />
+            por um valor que cabe no seu bolso!
+          </p>
+          <a href="#plans" class="btn btn-access btn-lg mt-3"
+            >QUERO TER ACESSO <span class="arrow">&rarr;</span></a
+          >
+        </div>
+        <div class="logo-section mt-5 mt-lg-0 ms-lg-5">
+          <img
+            src="assets/img/AppFlix-Logo.png"
+            alt="AppFlix TV Logo"
+            class="main-logo"
+          />
+        </div>
+      </section>
     </div>
-    <div class="feature">
-      <h2>⚡ Zero travamento. Qualidade FHD/4K</h2>
-      <p>Servidores premium, tecnologia Xtream Pro e suporte real.</p>
+
+    <div class="seila">
+      <section class="container py-5">
+        <h2 class="text-center fw-bold text-white mb-5">
+          O que torna a <span class="text-danger">AppFlix TV</span> única no
+          mercado?
+        </h2>
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-shield-alt fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">Segurança garantida</h5>
+              <p class="text-light">
+                Permanecemos vigilantes às mais recentes inovações de proteção,
+                assegurando a excelência de nosso produto.
+              </p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-credit-card fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">Múltiplas opções de pagamento</h5>
+              <p class="text-light">
+                Oferecemos uma diversidade de formas de pagamento para você
+                selecionar. Escolha entre cartão, boleto e outras alternativas
+                de transação digital.
+              </p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-headset fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">Suporte especializado</h5>
+              <p class="text-light">
+                Uma equipe pronta para atender você com excelência. Receba
+                assistência técnica por meio de Tickets e Chat ao Vivo,
+                garantindo um atendimento humanizado e sem a intervenção de
+                bots.
+              </p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-server fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">
+                Infraestrutura de servidores premium
+              </h5>
+              <p class="text-light">
+                Dispomos das mais avançadas infraestruturas de servidores para
+                garantir uma experiência de transmissão excepcional.
+              </p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-globe fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">
+                Desfrute em qualquer lugar, a qualquer momento
+              </h5>
+              <p class="text-light">
+                Aproveite seus programas favoritos onde e quando quiser, sem
+                restrições de horário ou local.
+              </p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card p-4 text-center">
+              <div class="icon mb-3">
+                <i class="fas fa-hand-holding-usd fa-2x text-light"></i>
+              </div>
+              <h5 class="text-white fw-bold">
+                Acessibilidade com preços justos
+              </h5>
+              <p class="text-light">
+                Oferecemos preços justos e acessíveis a todos, sem taxas
+                ocultas, multas injustas ou amarras contratuais. A liberdade de
+                cancelamento está sempre ao seu alcance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <div class="feature">
-      <h2>📱 Compatível com tudo</h2>
-      <p>Funciona em qualquer celular, TV, TV Box, notebook ou tablet. Liberação imediata.</p>
+
+    <div class="termos">
+      <section class="container-fluid py-5 section-solution">
+        <div class="container">
+          <!-- Título -->
+          <h2 class="text-danger text-center fw-bold mb-4">
+            Temos a solução para seus problemas!
+          </h2>
+
+          <!-- Primeira Linha: Texto e imagem_carrossel -->
+          <div class="row align-items-center mb-5 content-group">
+            <div class="col-lg-6 text-content">
+              <h3 class="fw-bold">
+                Um Universo de Entretenimento em um Único Lugar
+              </h3>
+              <p class="mt-4">
+                Abra as portas para um mundo ilimitado de entretenimento com
+                acesso a uma variedade incomparável de filmes e séries, tudo
+                dentro de uma única plataforma. Simplifique sua experiência ao
+                dizer adeus às assinaturas múltiplas, permitindo que você
+                escolha com liberdade.
+              </p>
+              <p>
+                Com nossa abordagem unificada, desfrute da comodidade de ter
+                tudo o que deseja assistir a distância de um clique, sem a
+                necessidade de saltar entre diferentes plataformas.
+              </p>
+            </div>
+            <div class="col-lg-6 image-content">
+              <img
+                src="assets/img/imagem03_1_ic.webp"
+                alt="Entretenimento"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+
+          <!-- Segunda Linha: imagem_carrossel e Texto -->
+          <div class="row align-items-center mb-5 content-group">
+            <div class="col-lg-6 image-content">
+              <img
+                src="assets/img/imagem03_2_ic.webp"
+                alt="Informações dos times"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-lg-6 text-content">
+              <h3 class="fw-bold">
+                Assista aos Jogos do Seu Time a Qualquer Hora, em Qualquer
+                Lugar!
+              </h3>
+              <p class="mt-4">
+                Liberte sua paixão pelo futebol com nossa plataforma de
+                streaming revolucionária! Assista aos jogos do seu time do
+                coração a qualquer hora, em qualquer lugar.
+              </p>
+              <p>
+                Reviva momentos decisivos e acompanhe a evolução do seu time.
+                Assista onde quiser, no ônibus, em casa ou no trabalho. Torne-se
+                o mestre do seu cronograma esportivo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Botão Centralizado -->
+          <div class="text-center">
+            <a href="#plans" class="btn btn-access btn-lg mt-3"
+              >QUERO TER ACESSO <span class="arrow">&rarr;</span></a
+            >
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <div class="price-box">
-    <h2>💰 Comparativo real de preço</h2>
-    <ul>
-      <li>Netflix: R$ 40</li>
-      <li>Amazon: R$ 15</li>
-      <li>Disney+: R$ 33</li>
-      <li>HBO Max: R$ 35</li>
-      <li>Globoplay: R$ 25</li>
-      <li>Total: +R$ 600/mês</li>
-    </ul>
-    <p><strong>Com AppFlix: só R$ 35/mês</strong></p>
-  </div>
+    <section class="carousel-section pb-5">
+        <h2 class="highlight-title pb-5 pt-5">
+          A melhor lista de <span class="highlight highlight-canais">canais</span>,
+          <span class="highlight highlight-filmes">filmes</span> e
+          <span class="highlight highlight-series">séries</span>.
+        </h2>
+        <div class="carousel-wrapper">
+          <!-- Linha 1 -->
+          <div class="carousel-row row-1">
+            <img
+              src="assets/img/line1/imagem_carrossel1.webp"
+              alt="imagem_carrossel 1"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel2.webp"
+              alt="imagem_carrossel 2"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel3.webp"
+              alt="imagem_carrossel 3"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel4.webp"
+              alt="imagem_carrossel 4"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel5.webp"
+              alt="imagem_carrossel 5"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel6.webp"
+              alt="imagem_carrossel 6"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel7.webp"
+              alt="imagem_carrossel 7"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel8.webp"
+              alt="imagem_carrossel 8"
+            />
+            <!-- Duplicação -->
+            <img
+              src="assets/img/line1/imagem_carrossel1.webp"
+              alt="imagem_carrossel 1"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel2.webp"
+              alt="imagem_carrossel 2"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel3.webp"
+              alt="imagem_carrossel 3"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel4.webp"
+              alt="imagem_carrossel 4"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel5.webp"
+              alt="imagem_carrossel 5"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel6.webp"
+              alt="imagem_carrossel 6"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel7.webp"
+              alt="imagem_carrossel 7"
+            />
+            <img
+              src="assets/img/line1/imagem_carrossel8.webp"
+              alt="imagem_carrossel 8"
+            />
+          </div>
+          <!-- Linha 2 -->
+          <div class="carousel-row row-2">
+            <img
+              src="assets/img/line2/imagem_carrossel9.webp"
+              alt="imagem_carrossel 9"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel10.webp"
+              alt="imagem_carrossel 10"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel11.webp"
+              alt="imagem_carrossel 11"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel12.webp"
+              alt="imagem_carrossel 12"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel13.webp"
+              alt="imagem_carrossel 13"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel14.webp"
+              alt="imagem_carrossel 14"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel15.webp"
+              alt="imagem_carrossel 15"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel16.webp"
+              alt="imagem_carrossel 16"
+            />
+            <!-- Duplicação -->
+            <img
+              src="assets/img/line2/imagem_carrossel9.webp"
+              alt="imagem_carrossel 9"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel10.webp"
+              alt="imagem_carrossel 10"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel11.webp"
+              alt="imagem_carrossel 11"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel12.webp"
+              alt="imagem_carrossel 12"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel13.webp"
+              alt="imagem_carrossel 13"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel14.webp"
+              alt="imagem_carrossel 14"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel15.webp"
+              alt="imagem_carrossel 15"
+            />
+            <img
+              src="assets/img/line2/imagem_carrossel16.webp"
+              alt="imagem_carrossel 16"
+            />
+          </div>
+          <!-- Linha 3 -->
+          <div class="carousel-row row-3">
+            <img
+              src="assets/img/line3/imagem_carrossel17.webp"
+              alt="imagem_carrossel 17"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel18.webp"
+              alt="imagem_carrossel 18"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel19.webp"
+              alt="imagem_carrossel 19"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel20.webp"
+              alt="imagem_carrossel 20"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel21.webp"
+              alt="imagem_carrossel 21"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel22.webp"
+              alt="imagem_carrossel 22"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel23.webp"
+              alt="imagem_carrossel 23"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel24.webp"
+              alt="imagem_carrossel 24"
+            />
+            <!-- Duplicação -->
+            <img
+              src="assets/img/line3/imagem_carrossel17.webp"
+              alt="imagem_carrossel 17"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel18.webp"
+              alt="imagem_carrossel 18"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel19.webp"
+              alt="imagem_carrossel 19"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel20.webp"
+              alt="imagem_carrossel 20"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel21.webp"
+              alt="imagem_carrossel 21"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel22.webp"
+              alt="imagem_carrossel 22"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel23.webp"
+              alt="imagem_carrossel 23"
+            />
+            <img
+              src="assets/img/line3/imagem_carrossel24.webp"
+              alt="imagem_carrossel 24"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <a class="hero-button" href="https://wa.me/5554996777743?text=Quero%20acesso%20ao%20AppFlix">TESTAR AGORA GRÁTIS</a>
-</body>
-</html>
-    """)
+    <section class="testimonials-section py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- Texto -->
+            <div class="col-md-4">
+                <h2 class="text-white highlight-title">
+                    Quem usa, <span class="highlight">recomenda!</span>
+                </h2>
+                <p class="text-white mt-3">
+                    Veja o que nossos clientes têm a dizer sobre os nossos serviços!
+                </p>
+            </div>
+      
+            <!-- Carrossel de Cards -->
+            <div class="col-md-8">
+              <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <!-- Grupo 1 -->
+                  <div class="carousel-item active">
+                    <div class="row justify-content-center text-center">
+                      <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento06.jpg" class="card-img" alt="Prova 1">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 d-none d-md-block">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento2.webp" class="card-img" alt="Prova 2">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento3 (1).webp" class="card-img" alt="Prova 3">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Grupo 2 -->
+                  <div class="carousel-item">
+                    <div class="row justify-content-center text-center">
+                      <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento1.webp" class="card-img" alt="Prova 4">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 d-none d-md-block">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento4 (1).webp" class="card-img" alt="Prova 5">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                          <img src="assets/img/prova social/depoimento5.webp" class="card-img" alt="Prova 6">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Controles do Carrossel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    zipf.writestr("style.css", """
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-}
-header {
-  background: linear-gradient(to right, #ff0078, #4200ff);
-  padding: 30px 20px;
-}
-h1 { font-size: 26px; margin-bottom: 10px; }
-p { font-size: 18px; max-width: 600px; margin: 0 auto; }
-.hero-button {
-  display: inline-block;
-  background-color: #ff0078;
-  color: white;
-  padding: 16px 32px;
-  font-size: 18px;
-  text-decoration: none;
-  border-radius: 10px;
-  margin-top: 25px;
-  animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-section { padding: 40px 20px; }
-.feature { margin-bottom: 20px; }
-.price-box {
-  background-color: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 600px;
-  margin: 30px auto;
-}
-.price-box ul { list-style: none; padding: 0; }
-.price-box li { margin: 10px 0; }
-    """)
+      <section class="cashback-section py-5">
+        <div class="container">
+          <!-- Primeira Parte: Cashback -->
+          <div class="row align-items-center mb-5">
+            <!-- Texto -->
+            <div class="col-md-6">
+              <h2 class="highlight-title">
+                RECEBA <span class="text-gradient">CASHBACK</span> <br>
+                POR INDICAR A <span class="text-gradient">APPFLIX!</span>
+              </h2>
+              <p class="cashback-subtitle">
+                Nossos clientes ganham <span class="text-gradient">cashback</span> de indicação e premiação de fidelidade.
+              </p>
+            </div>
+      
+            <!-- Imagem de Presentes -->
+            <div class="col-md-6 text-center">
+              <img src="assets/img/presente.png" alt="Presentes Cashback" class="cashback-img">
+            </div>
+          </div>
+      
+          <!-- Segunda Parte: Assinatura de Streamings -->
+          <div class="row align-items-center">
+            <!-- Imagem da TV -->
+            <div class="col-md-6 text-center">
+              <img src="assets/img/mockup-mac-1536x932.webp" alt="Streamings na TV" class="streaming-img">
+            </div>
+      
+            <!-- Texto e Botão -->
+            <div class="col-md-6">
+              <h3 class="highlight-title">
+                O que você pagaria assinando <br>
+                <span class="text-gradient">todos os streamings do mercado?</span>
+              </h3>
+              <p class="streaming-text">
+                Sky + Disney + HBO + Prime Video + Paramount você pagaria aproximadamente R$ 150,00 por mês. 
+                Com o APPFLIX, você ganha mais de 90% de desconto no plano anual com todas as plataformas inclusas e todos os canais da TV aberta e fechada liberada para você e sua família.
+              </p>
+              <a href="#plans" class="btn btn-access btn-lg mt-3"
+              >QUERO TER ACESSO <span class="arrow">&rarr;</span></a
+            >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-zip_path
-
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-}
-header {
-  background: linear-gradient(to right, #ff0078, #4200ff);
-  padding: 30px 20px;
-}
-h1 { font-size: 26px; margin-bottom: 10px; }
-p { font-size: 18px; max-width: 600px; margin: 0 auto; }
-.hero-button {
-  display: inline-block;
-  background-color: #ff0078;
-  color: white;
-  padding: 16px 32px;
-  font-size: 18px;
-  text-decoration: none;
-  border-radius: 10px;
-  margin-top: 25px;
-  animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-section { padding: 40px 20px; }
-.feature { margin-bottom: 20px; }
-.price-box {
-  background-color: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 600px;
-  margin: 30px auto;
-}
-.price-box ul { list-style: none; padding: 0; }
-.price-box li { margin: 10px 0; }
+      <section id="plans" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4 text-light text-gradient pb-5 highlight-title">Seu Passaporte para um Mundo de Entretenimento Sem Limites</h2>
+            <div class="row g-4 justify-content-center">
+                
+                <!-- Plano Premium -->
+                <div class="col-md-3">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <span class="badge-economy">🔥 ECONOMIZE R$140,90</span>
+                            <h4>Plano Premium</h4>
+                            <p class="price">R$ 279,90 <span>/ ano</span></p>
+                            <p class="installment">12x de <strong>R$ 27,99</strong></p>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✔ Qualidade HD/SD</li>
+                            <li>✔ Guia de Programação [EPG]</li>
+                            <li>✔ Assista no Smartphone/Tablet</li>
+                            <li>✔ Assista na Smart TV</li>
+                            <li>✔ Assista no Computador</li>
+                            <li>✔ Qualidade FHD/4K</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Liberação automática</li>
+                            <li>✔ 1 Telas</li>
+                        <a href="https://pay.kirvano.com/eb5c7bf9-b53a-4d8c-b56a-9d3602ed9e38" class="btn btn-danger w-100">Assinar Agora</a>
+                    </div>
+                </div>
     
+                <!-- Plano Master (Popular) -->
+                <div class="col-md-3">
+                    <div class="plan-card popular">
+                        <div class="plan-header">
+                            <span class="badge-economy">🔥 MAIS POPULAR</span>
+                            <h4>Plano Master</h4>
+                            <p class="price">R$ 159,90 <span>/ semestre</span></p>
+                            <p class="installment">6x de <strong>R$ 29,78</strong></p>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✔ Qualidade HD/SD</li>
+                            <li>✔ Guia de Programação [EPG]</li>
+                            <li>✔ Assista no Smartphone/Tablet</li>
+                            <li>✔ Assista na Smart TV</li>
+                            <li>✔ Assista no Computador</li>
+                            <li>✔ Qualidade FHD/4K</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Liberação automática</li>
+                            <li>✔ 1 Telas</li>
+                        </ul>
+                        <a href="https://pay.kirvano.com/bb36f701-210b-40c9-941e-ff368f52528c" class="btn btn-danger w-100">Assinar Agora</a>
+                    </div>
+                </div>
+    
+                <!-- Plano Básico -->
+                <div class="col-md-3">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <span class="badge-economy">🔥 EXPERIÊNCIA PREMIUM</span>
+                            <h4>Plano Básico</h4>
+                            <p class="price">R$ 89,90 <span>/ trimestre</span></p>
+                            <p class="installment">3x de <strong>R$ 32,25</strong></p>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✔ Qualidade HD/SD</li>
+                            <li>✔ Guia de Programação [EPG]</li>
+                            <li>✔ Assista no Smartphone/Tablet</li>
+                            <li>✔ Assista na Smart TV</li>
+                            <li>✔ Assista no Computador</li>
+                            <li>✔ Qualidade FHD/4K</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Liberação automática</li>
+                            <li>✔ 1 Telas</li>
+                        </ul>
+                        <a href="https://pay.kirvano.com/dd2a929f-3961-41bd-ad42-548e4ab4de46" class="btn btn-danger w-100">Assinar Agora</a>
+                    </div>
+                </div>
+    
+                <!-- Plano Mensal -->
+                <div class="col-md-3">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <span class="badge-economy">🔥 FLEXIBILIDADE</span>
+                            <h4>Plano Mensal</h4>
+                            <p class="price">R$ 34,90 <span>/ mês</span></p>
+                            <p class="installment">Sem parcelamento</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✔ Qualidade HD/SD</li>
+                            <li>✔ Guia de Programação [EPG]</li>
+                            <li>✔ Assista no Smartphone/Tablet</li>
+                            <li>✔ Assista na Smart TV</li>
+                            <li>✔ Assista no Computador</li>
+                            <li>✔ Qualidade FHD/4K</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Assista no TV Box/Chromecast</li>
+                            <li>✔ Liberação automática</li>
+                            <li>✔ 1 Telas</li>
+                        </ul>
+                        <a href="https://pay.kirvano.com/af229fbe-950b-4223-9799-a9959775aea0" class="btn btn-danger w-100">Assinar Agora</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs">
+        <div class="container">
+            <h2 class="text-center">Perguntas Frequentes</h2>
+            <div class="accordion" id="faqAccordion">
+                <!-- Pergunta 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            O que é AppFlix TV?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A AppFlix TV é a melhor plataforma de filmes, séries e tv aberta do mundo com atualizações semanais de conteúdo, filmes de cinema, novelas de época, Premiere, Combate, Telecine, Sky, Disney Plus, HBO, Prime Vídeo, Globo Play , conteúdos infantis e adultos com a melhor transmissão.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pergunta 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Como funciona o acesso aos conteúdos?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Após efetuar o pagamento vc recebe a notificação instantânea em seu email com login de acesso e um de nossos colaboradores vai te chamar no WhatsApp para ajudar em qualquer situação.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pergunta 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Posso assistir em qualquer dispositivo?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Nosso app personalizado pode ser acessado em qualquer lugar a qualquer hora e em qualquer dispositivo, seja TV Smart, Firestick, TVBox, computador, smartphone Android e iPhone.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pergunta 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Como faço para assinar?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Basta escolher o plano que mais se encaixa com o seu bolso , você será direcionado para uma área segura de pagamento e o dinheiro fica retido ate a liberação do seu sinal com toda segurança e tranquilidade.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pergunta 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Qual é a diferença entre nossa plataforma e outras plataformas de streaming?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A AppFlix TV e a única plataforma que tem 5 servidores de backup contra travamentos com atualizações de conteúdo programa de indicação com cashback instantâneos e sorteio mensal de planos totalmente grátis para nossos assinantes.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pergunta 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Como saberei se a AppFlix TV é a melhor?
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Simples, com 7 dias de garantia se você não gostar do nosso serviço, basta enviar um email que seu dinheiro é devolvido rapidamente pela lei do consumidor digital.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="custom-footer">
+        <div class="footer-content">
+            <p>AppFlix TV © 2025. Todos os direitos reservados</p>
+            <p>+55 14 9 9183-4215</p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ed8e8283998c9982ad8c9d9d8b818495999b8283c38e8280">[email&#160;protected]</a></p>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+    <a href="https://wa.me/5514991834215" target="_blank" id="whatsapp-icon" title="Fale conosco no WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "q4baqdrmj2");
+</script>
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q95X8Q22GP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q95X8Q22GP');
+    </script>
+    <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1227527081904800');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1227527081904800&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  </body>
+</html>
