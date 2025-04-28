@@ -44,7 +44,7 @@
       position: relative;
       width: 320px;
     }
-    .carousel-image {
+    .carousel-video {
       width: 100%;
       border-radius: 10px;
     }
@@ -52,6 +52,13 @@
       margin-top: 10px;
       font-size: 18px;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .carousel-text img {
+      height: 24px;
     }
     .nav-button {
       position: absolute;
@@ -70,26 +77,30 @@
     }
     .prev { left: -40px; }
     .next { right: -40px; }
-    ul.features {
-      list-style: none;
-      padding: 0;
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 700px;
       margin: 40px auto;
-      text-align: left;
-      max-width: 600px;
-      font-size: 18px;
-      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
-      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
     }
-    ul.features li {
-      margin: 10px 0;
-      padding-left: 1.2em;
-      position: relative;
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      text-align: left;
     }
-    ul.features li::before {
-      content: '🔥';
-      position: absolute;
-      left: 0;
+    .benefit span {
+      font-size: 32px;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
     }
     .cta-button {
       display: inline-block;
@@ -120,69 +131,116 @@
       50% { opacity: 0.6; }
       100% { opacity: 1; }
     }
+    .live-notification {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 0 10px rgba(255, 0, 120, 0.6);
+      z-index: 9999;
+      animation: fade 0.5s ease-in-out;
+      display: none;
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-
-<div class="urgency-popup">
-  ⚠️ Promoção Relâmpago: Teste GRÁTIS por 3 horas - Só hoje!
-</div>
-
-<header>
-  <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
-  <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
-</header>
-
-<div class="carousel-container">
-  <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
-  <img id="carouselImage" class="carousel-image" src="https://logodownload.org/wp-content/uploads/2014/10/netflix-logo-5.png" alt="Logo App">
-  <div id="carouselText" class="carousel-text">NETFLIX</div>
-  <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
-</div>
-
-<ul class="features">
-  <li>+6.000 Canais ao vivo (UFC, Premiere, SporTV, ESPN, Band, Esportes, Paramount, Conmebol Libertadores, etc)</li>
-  <li>Todos os Filmes e séries atualizadas (Netflix, HBOMAX, Disney+, Amazon, Globo Play, Crunchyroll, STAR+, Apple TV etc)</li>
-  <li>Canais adultos liberados</li>
-  <li>Compatível com Smart TV, celular, tablet, computador</li>
-  <li>Transmissão rápida e estável</li>
-</ul>
-
-<a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
-  QUERO TESTAR GRÁTIS AGORA
-</a>
-
-<script>
-  const logos = [
-    { src: 'https://logodownload.org/wp-content/uploads/2014/10/netflix-logo-5.png', name: 'NETFLIX' },
-    { src: 'https://logodownload.org/wp-content/uploads/2020/11/hbo-max-logo-0.png', name: 'HBO MAX' },
-    { src: 'https://logodownload.org/wp-content/uploads/2018/10/prime-video-logo-1.png', name: 'AMAZON PRIME' },
-    { src: 'https://logodownload.org/wp-content/uploads/2017/04/globoplay-logo.png', name: 'GLOBOPLAY' },
-    { src: 'https://logodownload.org/wp-content/uploads/2021/08/disney-plus-logo-11.png', name: 'DISNEY PLUS' },
-    { src: 'https://logodownload.org/wp-content/uploads/2021/05/crunchyroll-logo.png', name: 'CRUNCHYROLL' }
-  ];
-
-  let current = 0;
-  const img = document.getElementById('carouselImage');
-  const txt = document.getElementById('carouselText');
-
-  function updateCarousel() {
-    img.src = logos[current].src;
-    txt.textContent = logos[current].name;
-  }
-
-  function nextSlide() {
-    current = (current + 1) % logos.length;
-    updateCarousel();
-  }
-
-  function prevSlide() {
-    current = (current - 1 + logos.length) % logos.length;
-    updateCarousel();
-  }
-
-  setInterval(nextSlide, 4000);
-</script>
-
+  <div class="urgency-popup">
+    ⚠️ Promoção Relâmpago: Teste GRÁTIS por 3 horas - Só hoje!
+  </div>
+  <header>
+    <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
+    <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
+  </header>
+  <div class="carousel-container">
+    <button class="nav-button prev" onclick="prevVideo()">&#10094;</button>
+    <video id="carouselVideo" class="carousel-video" autoplay muted loop>
+      <source id="videoSource" src="" type="video/mp4">
+    </video>
+    <div id="carouselText" class="carousel-text"></div>
+    <button class="nav-button next" onclick="nextVideo()">&#10095;</button>
+  </div>
+  <div class="benefits">
+    <div class="benefit"><span>📺</span><p><strong>+6.000 Canais ao Vivo</strong><br>UFC, Premiere, SporTV, Conmebol, ESPN, TNT Sports e mais!</p></div>
+    <div class="benefit"><span>🎬</span><p><strong>Filmes e Séries Atualizadas</strong><br>Netflix, Amazon, Disney+, Star+, Apple TV, HBO Max</p></div>
+    <div class="benefit"><span>🔞</span><p><strong>Canais Adultos Liberados</strong><br>Sem bloqueios. Acesso completo.</p></div>
+    <div class="benefit"><span>🧠</span><p><strong>Compatível com Tudo</strong><br>Celular, Smart TV, Tablet, Notebook e TV Box</p></div>
+    <div class="benefit"><span>⚡</span><p><strong>Transmissão Rápida e Estável</strong><br>Zero travamento. Qualidade HD e Full HD.</p></div>
+  </div>
+  <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 10px; margin: 40px auto; max-width: 700px;">
+    <h2 style="font-size: 22px; margin-bottom: 15px;">📣 Pessoas reais já estão economizando com esse app:</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Lucas R.</strong> ⭐⭐⭐⭐⭐<br>"Assinei e cancelei tudo. Netflix, Amazon... tudo aqui dentro. Top demais!"</p></div>
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Renata M.</strong> ⭐⭐⭐⭐⭐<br>"Achei que fosse fake, mas testei as 3h grátis e fiquei! Muito melhor que pagar R$300/mês."</p></div>
+      <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; width: 250px;"><p><strong>Thiago V.</strong> ⭐⭐⭐⭐⭐<br>"Futebol ao vivo, séries e até canais adultos. É surreal por esse preço!"</p></div>
+    </div>
+  </div>
+  <div style="background: rgba(255,255,255,0.07); padding: 25px; margin: 40px auto; max-width: 700px; border-radius: 10px;">
+    <h2 style="font-size: 22px; margin-bottom: 10px;">💰 Comparativo Real</h2>
+    <p style="font-size: 17px; line-height: 1.5;">Se você pagasse os planos mais baratos de cada app de streaming individualmente, daria algo assim:</p>
+    <ul style="list-style: none; padding: 0; text-align: left; margin: 15px auto; max-width: 400px;">
+      <li>Netflix: R$40</li>
+      <li>Amazon Prime: R$15</li>
+      <li>Disney+: R$33</li>
+      <li>HBO Max: R$35</li>
+      <li>Globoplay: R$25</li>
+      <li>Crunchyroll: R$25</li>
+      <li>+ Canais de TV ao vivo, UFC, Premiere: R$150+</li>
+    </ul>
+    <p style="font-size: 18px; font-weight: bold; margin-top: 10px; color: #00ff99;">Total: +R$600/mês 💸</p>
+    <p style="font-size: 18px; margin-top: 10px;">Com o nosso app: <strong style="color:#ff0078">R$35 mensais</strong> — o preço de uma pizza 🍕</p>
+  </div>
+  <a href="https://wa.me/5554996777743?text=Quero%20o%20teste%20IPTV%203h%20gr%C3%A1tis" class="cta-button">
+    QUERO TESTAR GRÁTIS AGORA
+  </a>
+  <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
+  <script>
+    const videos = [
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-05/small_watermarked/230426_02_Family_Livingroom_4k_001_preview.webm", logo: "Crunchyroll.png", name: "CRUNCHYROLL" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-07/small_watermarked/230703_BingeWatching_4k_001_preview.webm", logo: "NETFLIX.png", name: "NETFLIX" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-08/small_watermarked/230801_HBO_WatchParty_4k_001_preview.webm", logo: "HBOMAX.jpg", name: "HBO MAX" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-06/small_watermarked/230608_03_AmazonFamily_4k_001_preview.webm", logo: "AMAZON.png", name: "AMAZON PRIME" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-07/small_watermarked/230717_TV_Globoplay_4k_001_preview.webm", logo: "GLOBOPLAY.jpg", name: "GLOBO PLAY" },
+      { src: "https://cdn.videvo.net/videvo_files/video/free/2023-06/small_watermarked/230610_02_DisneyAnimationFan_4k_001_preview.webm", logo: "disneyplus.JPG", name: "DISNEY PLUS" }
+    ];
+    let current = 0;
+    const videoEl = document.getElementById('carouselVideo');
+    const videoSource = document.getElementById('videoSource');
+    const textEl = document.getElementById('carouselText');
+    function updateVideo() {
+      videoSource.src = videos[current].src;
+      videoEl.load();
+      textEl.innerHTML = <img src="${videos[current].logo}" alt="${videos[current].name}"> ${videos[current].name};
+    }
+    function nextVideo() {
+      current = (current + 1) % videos.length;
+      updateVideo();
+    }
+    function prevVideo() {
+      current = (current - 1 + videos.length) % videos.length;
+      updateVideo();
+    }
+    setInterval(nextVideo, 7000);
+    const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
+    let nomeAtual = 0;
+    function mostrarNotificacao() {
+      const notify = document.getElementById('liveNotify');
+      notify.textContent = 👥 ${nomes[nomeAtual]} acabou de comprar!;
+      notify.style.display = 'block';
+      setTimeout(() => { notify.style.display = 'none'; }, 3000);
+      nomeAtual = (nomeAtual + 1) % nomes.length;
+      setTimeout(mostrarNotificacao, 6000);
+    }
+    setTimeout(mostrarNotificacao, 2000);
+    updateVideo();
+  </script>
 </body>
 </html>
