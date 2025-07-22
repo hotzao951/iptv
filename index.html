@@ -1,99 +1,434 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Teste IPTV - 3 Horas Grátis</title>
+  <title>StreamPrime – IPTV Profissional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://tse2.mm.bing.net/th?id=OIP.uxGi-dl4seF9Koxp07CcrgHaE8&pid=Api');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-      margin: 0;
-      padding: 0;
-      text-align: center;
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    /* Neon glow */
+    .glow { text-shadow: 0 0 6px #00f0ff, 0 0 12px #00f0ff, 0 0 18px #00f0ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff; }
+    .glow-border {
+      background: linear-gradient(135deg,#00f0ff 0%,#ff00ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-card {
+      backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg,#00f0ff 0%,#ff00ff 100%);
+      transition: all .3s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 20px #00f0ff80, 0 0 40px #ff00ff40;
+      transform: translateY(-2px) scale(1.03);
+    }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      transition: all .3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #00f0ff;
+    }
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform .9s ease;
+    }
+    .scroll-reveal.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Progress bar */
+    .progress-bar {
+      height: 3px;
+      background: linear-gradient(90deg,#00f0ff 0%,#ff00ff 100%);
+      transition: width .3s ease;
+    }
+    /* Floating animation */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    /* Ripple */
+    .ripple {
       position: relative;
+      overflow: hidden;
     }
-    body::before {
+    .ripple::after {
       content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      transform: translate(-50%,-50%);
+      animation: rippleEffect .6s forwards;
     }
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 40px 20px 20px;
+    @keyframes rippleEffect {
+      to { width: 400px; height: 400px; opacity: 0; }
     }
-    header h1 {
-      font-size: 28px;
-      margin: 0;
+    /* Toggle */
+    .toggle-switch {
+      position: relative;
+      width: 52px; height: 28px;
+      background: rgba(255,255,255,.15);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background .3s;
     }
-    header p {
-      font-size: 18px;
-      margin-top: 10px;
+    .toggle-switch.active { background: linear-gradient(135deg,#00f0ff 0%,#ff00ff 100%); }
+    .toggle-switch::after {
+      content: "";
+      position: absolute;
+      top: 4px; left: 4px;
+      width: 20px; height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform .3s;
     }
-    .highlight-bar {
-      background-color: #00ff99;
-      color: black;
-      font-weight: bold;
-      padding: 12px;
-      font-size: 16px;
-      animation: pulseHighlight 1.5s infinite;
+    .toggle-switch.active::after { transform: translateX(24px); }
+    /* Modal */
+    .modal {
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s;
     }
-    @keyframes pulseHighlight {
-      0% { opacity: 1; }
-      50% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-    .live-notification {
-      position: fixed;
-      bottom: 60px;
-      right: 20px;
-      background-color: rgba(0, 0, 0, 0.85);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 0 10px rgba(255, 0, 120, 0.6);
-      z-index: 9999;
-      animation: fade 0.5s ease-in-out;
-      display: none;
-    }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
     }
   </style>
 </head>
-<body>
-  <div class="highlight-bar">
-    🔥 Mais de 10.000 pessoas já testaram hoje! Aproveite enquanto está no ar.
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- Progress bar -->
+<div class="fixed top-0 left-0 w-full z-[60]">
+  <div id="progress-bar" class="progress-bar"></div>
+</div>
+
+<!-- Background -->
+<div class="fixed inset-0 -z-10 grid-bg"></div>
+<div class="fixed inset-0 -z-20 bg-gradient-to-br from-indigo-900/20 via-black to-pink-900/20"></div>
+<div class="fixed top-0 left-0 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl animate-float"></div>
+<div class="fixed bottom-0 right-0 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 glass-card">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <div class="text-2xl font-display font-bold glow-border">StreamPrime</div>
+    <div class="hidden md:flex space-x-6 items-center">
+      <a href="#home" class="hover:text-cyan-300 transition">Home</a>
+      <a href="#plans" class="hover:text-cyan-300 transition">Planos</a>
+      <a href="#test" class="hover:text-cyan-300 transition">Teste</a>
+      <a href="#faq" class="hover:text-cyan-300 transition">FAQ</a>
+      <div class="flex items-center space-x-2">
+        <span class="text-sm">Modo</span>
+        <div id="theme-toggle" class="toggle-switch"></div>
+      </div>
+    </div>
+    <button id="mobile-btn" class="md:hidden">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
   </div>
-  <header>
-    <h1>🔥 TODOS OS STREAMINGS E CANAIS AO VIVO EM UM SÓ APP</h1>
-    <p>Receba acesso gratuito por 3 horas. Teste agora sem compromisso!</p>
-  </header>
-  <div class="live-notification" id="liveNotify">👥 Alexandre acabou de comprar!</div>
-  <script>
-    const nomes = ["Alexandre", "Camila", "Roberto", "Juliana", "Fernando", "Patrícia", "Rafael", "Larissa"];
-    let nomeAtual = 0;
-    function mostrarNotificacao() {
-      const notify = document.getElementById('liveNotify');
-      notify.textContent = `👥 ${nomes[nomeAtual]} acabou de comprar!`;
-      notify.style.display = 'block';
-      setTimeout(() => { notify.style.display = 'none'; }, 3000);
-      nomeAtual = (nomeAtual + 1) % nomes.length;
-      setTimeout(mostrarNotificacao, 6000);
-    }
-    setTimeout(mostrarNotificacao, 2000);
-  </script>
+  <div id="mobile-menu" class="hidden md:hidden px-4 py-2 space-y-2">
+    <a href="#home" class="block py-2">Home</a>
+    <a href="#plans" class="block py-2">Planos</a>
+    <a href="#test" class="block py-2">Teste</a>
+    <a href="#faq" class="block py-2">FAQ</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="min-h-screen flex items-center justify-center px-4">
+  <div class="text-center max-w-4xl">
+    <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight scroll-reveal">
+      Assine o <span class="glow">melhor IPTV Premium</span> do Brasil
+    </h1>
+    <p class="text-lg md:text-xl text-gray-300 mt-6 mb-8 max-w-2xl mx-auto scroll-reveal">
+      15.000+ canais, filmes e séries em 4K. Suporte 24h via WhatsApp, instalação grátis e garantia de 7 dias.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal">
+      <button id="btn-cta" class="btn-primary text-white font-semibold py-4 px-10 rounded-full text-lg ripple">Garantir 50% OFF agora</button>
+      <button id="btn-test" class="btn-secondary text-white font-semibold py-4 px-10 rounded-full text-lg">Testar 24h grátis</button>
+    </div>
+    <p class="text-sm text-red-400 mt-4 animate-pulse scroll-reveal">
+      ⚡ Apenas <span id="spots">7</span> vagas restantes
+    </p>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-6 text-center">
+    <div class="glass-card rounded-xl p-6 scroll-reveal">
+      <div class="text-4xl font-display font-bold glow-border" id="channels">0</div>
+      <div class="text-gray-400 text-sm mt-1">Canais</div>
+    </div>
+    <div class="glass-card rounded-xl p-6 scroll-reveal">
+      <div class="text-4xl font-display font-bold glow-border" id="movies">0</div>
+      <div class="text-gray-400 text-sm mt-1">Filmes</div>
+    </div>
+    <div class="glass-card rounded-xl p-6 scroll-reveal">
+      <div class="text-4xl font-display font-bold glow-border" id="series">0</div>
+      <div class="text-gray-400 text-sm mt-1">Séries</div>
+    </div>
+    <div class="glass-card rounded-xl p-6 scroll-reveal">
+      <div class="text-4xl font-display font-bold glow-border">99%</div>
+      <div class="text-gray-400 text-sm mt-1">Uptime</div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-display font-bold text-center mb-12 glow-border scroll-reveal">Por que escolher a StreamPrime?</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card rounded-xl p-8 scroll-reveal">
+        <i class="fas fa-tv text-4xl text-cyan-400 mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">15.000+ Canais</h3>
+        <p class="text-gray-400 text-sm">SD, HD, FHD e 4K de todo o mundo.</p>
+      </div>
+      <div class="glass-card rounded-xl p-8 scroll-reveal">
+        <i class="fas fa-server text-4xl text-cyan-400 mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">99% Uptime</h3>
+        <p class="text-gray-400 text-sm">Servidores dedicados para diversão sem travamentos.</p>
+      </div>
+      <div class="glass-card rounded-xl p-8 scroll-reveal">
+        <i class="fas fa-headset text-4xl text-cyan-400 mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Suporte 24h</h3>
+        <p class="text-gray-400 text-sm">WhatsApp, Telegram e e-mail todos os dias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plans -->
+<section id="plans" class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-display font-bold text-center mb-12 glow-border scroll-reveal">Escolha seu plano</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card rounded-xl p-8 text-center scroll-reveal">
+        <h3 class="text-2xl font-semibold">Trimestral</h3>
+        <p class="text-4xl font-display font-bold glow-border my-2">R$ 79,90</p>
+        <ul class="text-sm text-gray-300 space-y-1 mb-6">
+          <li>✓ 3 meses de acesso</li>
+          <li>✓ 15.000+ canais</li>
+          <li>✓ Suporte 24h</li>
+        </ul>
+        <button class="w-full btn-primary text-white font-semibold py-3 rounded-full">Comprar</button>
+        <p class="text-xs text-red-400 mt-2">⏱ Encerra em <span class="countdown">15:00</span></p>
+      </div>
+      <div class="glass-card rounded-xl p-8 text-center relative scroll-reveal">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-pink-500 text-xs font-bold px-3 py-1 rounded-full">Mais Popular</span>
+        <h3 class="text-2xl font-semibold">Anual</h3>
+        <p class="text-4xl font-display font-bold glow-border my-2">R$ 249,90 <span class="text-lg line-through text-gray-500">R$ 499,80</span></p>
+        <ul class="text-sm text-gray-300 space-y-1 mb-6">
+          <li>✓ 12 meses de acesso</li>
+          <li>✓ 15.000+ canais</li>
+          <li>✓ Suporte 24h</li>
+        </ul>
+        <button class="w-full btn-primary text-white font-semibold py-3 rounded-full">Comprar</button>
+      </div>
+      <div class="glass-card rounded-xl p-8 text-center scroll-reveal">
+        <h3 class="text-2xl font-semibold">Semestral</h3>
+        <p class="text-4xl font-display font-bold glow-border my-2">R$ 149,90</p>
+        <ul class="text-sm text-gray-300 space-y-1 mb-6">
+          <li>✓ 6 meses de acesso</li>
+          <li>✓ 15.000+ canais</li>
+          <li>✓ Suporte 24h</li>
+        </ul>
+        <button class="w-full btn-primary text-white font-semibold py-3 rounded-full">Comprar</button>
+        <p class="text-xs text-red-400 mt-2">⏱ Encerra em <span class="countdown">15:00</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison -->
+<section class="py-16 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-display font-bold text-center mb-12 glow-border scroll-reveal">Compare com os grandes</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left glass-card rounded-xl">
+        <thead>
+          <tr class="border-b border-gray-700">
+            <th class="px-4 py-3 text-xs uppercase tracking-wider">Serviço</th>
+            <th class="px-4 py-3 text-xs uppercase tracking-wider text-center">Preço/mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-700"><td class="px-4 py-3 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="h-5"/>Netflix Padrão</td><td class="px-4 py-3 text-center text-red-400 font-bold">R$ 45,90</td></tr>
+          <tr class="border-b border-gray-700"><td class="px-4 py-3 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="h-5"/>Disney+</td><td class="px-4 py-3 text-center text-red-400 font-bold">R$ 43,90</td></tr>
+          <tr class="border-b border-gray-700"><td class="px-4 py-3 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Amazon_Prime_Logo.svg" alt="Prime Video" class="h-5"/>Prime Video</td><td class="px-4 py-3 text-center text-red-400 font-bold">R$ 19,90</td></tr>
+          <tr class="border-b border-gray-700"><td class="px-4 py-3 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/HBO_MAX_logo.svg" alt="HBO Max" class="h-5"/>HBO Max</td><td class="px-4 py-3 text-center text-red-400 font-bold">R$ 55,90</td></tr>
+          <tr class="bg-gradient-to-r from-cyan-400 via-pink-500 to-red-500 font-bold text-lg">
+            <td class="px-4 py-3 flex items-center text-white"><i class="fas fa-check-circle mr-2"></i>StreamPrime IPTV</td>
+            <td class="px-4 py-3 text-center text-white">R$ 20,83</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Free Test -->
+<section id="test" class="py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-display font-bold mb-6 glow-border scroll-reveal">Teste GRÁTIS de 24h – acabando!</h2>
+    <p class="text-gray-300 mb-8 scroll-reveal">
+      Código <span class="text-cyan-300 font-bold">#BLACK2024</span> dá 24h grátis + 50% OFF na anual.<br/>Mas só até <span class="font-bold text-red-400">amanhã às 23:59</span>.
+    </p>
+    <form id="form-test" class="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal">
+      <input type="text" placeholder="Seu nome" required class="w-full sm:w-auto flex-1 px-4 py-3 rounded-full bg-black/30 border border-white/20 focus:border-cyan-300 outline-none"/>
+      <input type="tel" placeholder="Seu WhatsApp" required class="w-full sm:w-auto flex-1 px-4 py-3 rounded-full bg-black/30 border border-white/20 focus:border-cyan-300 outline-none"/>
+      <button class="w-full sm:w-auto btn-primary text-white font-semibold py-3 px-6 rounded-full">Chamar no WhatsApp →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16 px-4">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl font-display font-bold text-center mb-12 glow-border scroll-reveal">Perguntas Frequentes</h2>
+    <div class="space-y-4">
+      <div class="glass-card rounded-xl">
+        <button class="faq-toggler w-full text-left px-6 py-4 font-semibold focus:outline-none">O que é IPTV?</button>
+        <div class="faq-content px-6 pb-4 hidden text-gray-300 text-sm">É a televisão via protocolo de internet, transmitindo conteúdo ao vivo e sob demanda.</div>
+      </div>
+      <div class="glass-card rounded-xl">
+        <button class="faq-toggler w-full text-left px-6 py-4 font-semibold focus:outline-none">Funciona em qual aparelho?</button>
+        <div class="faq-content px-6 pb-4 hidden text-gray-300 text-sm">Smart TV, Android TV Box, Fire TV Stick, celulares e computadores.</div>
+      </div>
+      <div class="glass-card rounded-xl">
+        <button class="faq-toggler w-full text-left px-6 py-4 font-semibold focus:outline-none">Preciso de quantos Mbps?</button>
+        <div class="faq-content px-6 pb-4 hidden text-gray-300 text-sm">20 Mbps para 4K, 10 Mbps para SD/HD.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="glass-card py-8">
+  <div class="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
+    <p>© 2024 StreamPrime. Todos os direitos reservados.</p>
+    <div class="mt-4 space-x-4">
+      <a href="https://wa.me/5511999999999" class="hover:text-cyan-300">WhatsApp</a>
+      <a href="https://t.me/StreamPrime" class="hover:text-cyan-300">Telegram</a>
+      <a href="mailto:suporte@streamprime.com" class="hover:text-cyan-300">E-mail</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div id="modal" class="modal fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+  <div class="glass-card rounded-xl p-6 max-w-sm mx-4">
+    <h3 class="text-2xl font-display font-bold glow-border mb-2">Parabéns!</h3>
+    <p class="text-gray-300 text-sm mb-4">Você ganhou 50% OFF em qualquer plano anual. Aproveite agora!</p>
+    <div class="flex gap-3">
+      <button id="close" class="flex-1 btn-secondary text-white font-semibold py-2 rounded-full">Fechar</button>
+      <button class="flex-1 btn-primary text-white font-semibold py-2 rounded-full">Comprar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+gsap.from("#home h1", {duration:1.2,y:60,opacity:0,ease:"power2.out"});
+gsap.from("#home p", {duration:1.2,y:40,opacity:0,delay:.3,ease:"power2.out"});
+gsap.from("#home .btn-primary, #home .btn-secondary", {duration:1.2,scale:.8,opacity:0,delay:.6,ease:"power2.out"});
+
+window.addEventListener('scroll', () => {
+  const y = window.pageYOffset;
+  const progress = (y / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress-bar').style.width = `${progress}%`;
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('reveal'));
+}, {threshold:.2});
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+const animate = (id,end) => {
+  let start = 0;
+  const timer = setInterval(() => {
+    start += 100;
+    document.getElementById(id).innerText = start.toLocaleString();
+    if (start >= end) { clearInterval(timer); document.getElementById(id).innerText = end.toLocaleString(); }
+  }, 30);
+};
+animate('channels',15000);
+animate('movies',5000);
+animate('series',2000);
+
+let spots = parseInt(localStorage.getItem('spots')) || 7;
+document.getElementById('spots').textContent = spots;
+setInterval(() => {
+  if (spots > 1) { spots--; localStorage.setItem('spots',spots); document.getElementById('spots').textContent = spots; }
+}, 8000);
+
+function countdown() {
+  let min = 15, sec = 0;
+  document.querySelectorAll('.countdown').forEach(el => {
+    const t = setInterval(() => {
+      sec--;
+      if (sec < 0) { min--; sec = 59; }
+      if (min < 0) { clearInterval(t); el.textContent = 'Encerrado'; return; }
+      el.textContent = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+    }, 1000);
+  });
+}
+countdown();
+
+document.getElementById('mobile-btn').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+document.querySelectorAll('.faq-toggler').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const next = btn.nextElementSibling;
+    next.classList.toggle('hidden');
+  });
+});
+
+document.getElementById('form-test').addEventListener('submit', e => {
+  e.preventDefault();
+  const whatsappNumber = '5511999999999';
+  const name = e.target[0].value;
+  const msg = encodeURIComponent(`Olá! Quero teste grátis 24h + 50% OFF. Nome: ${name}`);
+  window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
+  e.target.reset();
+});
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+
+document.getElementById('btn-cta').addEventListener('click', () => {
+  document.getElementById('modal').classList.add('active');
+});
+document.getElementById('close').addEventListener('click', () => {
+  document.getElementById('modal').classList.remove('active');
+});
+</script>
+<script src="https://kit.fontawesome.com/3e9f693bab.js" crossorigin="anonymous"></script>
 </body>
 </html>
